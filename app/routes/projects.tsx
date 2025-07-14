@@ -5,10 +5,8 @@ import { useState, useEffect } from "react";
 import { getProjects } from "~/services/contentful.server";
 import type { ProjectFields } from "~/types/contentful";
 import { RiLinksFill, RiGithubFill, RiSearchLine } from "@remixicon/react";
-
 import NavBar from "~/components/NavBar";
 import Footer from "~/components/Footer";
-import GoToTop from "~/components/GoToTop";
 
 interface Project {
     fields: ProjectFields;
@@ -182,7 +180,6 @@ export default function ProjectsPage() {
             </div>
             
             <Footer />
-            <GoToTop />
         </div>
     );
 }
