@@ -120,7 +120,7 @@ export default function ProjectsPage() {
                                         <img
                                             src={typeof project.fields.cover.fields?.file?.url === "string"
                                                 ? project.fields.cover.fields.file.url
-                                                : undefined}
+                                                : ""}
                                             alt={project.fields.name}
                                             className="w-50 h-50 object-cover"
                                         />

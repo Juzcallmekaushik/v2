@@ -67,9 +67,9 @@ const Projects: React.FC = () => {
                                 {project.fields.cover && (
                                     <div className="bg-gray-500 overflow-hidden">
                                         <img
-                                            src={typeof project.fields.cover.fields?.file?.url === "string"
+                                            src={typeof project.fields.cover.fields?.file?.url === 'string'
                                                 ? project.fields.cover.fields.file.url
-                                                : undefined}
+                                                : ''}
                                             alt={project.fields.name}
                                             className="w-50 h-50 object-cover"
                                         />
