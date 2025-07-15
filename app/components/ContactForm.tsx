@@ -106,6 +106,7 @@ const ContactForm: React.FC = () => {
                     <p className="text-green-400 text-center mt-4">
                         Thank you! Your message
                         <br className="block sm:hidden" />
+                        <span className="hidden sm:inline"> </span>
                         has been sent.
                     </p>
                 )}
@@ -113,6 +114,7 @@ const ContactForm: React.FC = () => {
                     <p className="text-red-400 text-center mt-4">
                         Oops! Something went
                         <br className="block sm:hidden" />
+                        <span className="hidden sm:inline"> </span>
                         wrong. Please try again.
                     </p>
                 )}
