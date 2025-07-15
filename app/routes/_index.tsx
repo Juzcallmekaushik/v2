@@ -34,7 +34,7 @@ export default function Index() {
       const timer = setTimeout(() => {
         setIsLoading(false);
         sessionStorage.setItem("hasVisited", "true");
-      }, 3000);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [isLoading]);
