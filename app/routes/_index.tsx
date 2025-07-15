@@ -33,10 +33,7 @@ export default function Index() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show GoToTop if not at the top
       setShowGoToTop(window.scrollY > 0);
-
-      // Show PreviousVersions if scrolled to bottom
       const scrolledToBottom =
         window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
       setShowPreviousVersions(scrolledToBottom);
@@ -61,7 +58,6 @@ export default function Index() {
             </div>
           </div>
           <Projects />
-          {/* Contact Section */}
           <section id="contact" className="py-12 md:py-20">
             <ContactForm />
           </section>

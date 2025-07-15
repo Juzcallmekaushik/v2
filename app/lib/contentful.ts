@@ -1,10 +1,8 @@
 import { createClient, type ContentfulClientApi } from 'contentful';
 
-// Create Contentful clients with better error handling
 let contentfulClient: ContentfulClientApi<undefined> | null = null;
 let contentfulPreviewClient: ContentfulClientApi<undefined> | null = null;
 
-// Check if we have valid Contentful configuration
 const hasValidContentfulConfig = () => {
   const spaceId = process.env.CONTENTFUL_SPACE_ID;
   const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
@@ -12,7 +10,6 @@ const hasValidContentfulConfig = () => {
   return spaceId && accessToken && spaceId.length > 0 && accessToken.length > 0;
 };
 
-// Check if we have valid Contentful preview configuration  
 const hasValidPreviewConfig = () => {
   const spaceId = process.env.CONTENTFUL_SPACE_ID;
   const previewToken = process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
@@ -20,7 +17,6 @@ const hasValidPreviewConfig = () => {
   return spaceId && previewToken && spaceId.length > 0 && previewToken.length > 0;
 };
 
-// Initialize clients
 if (hasValidContentfulConfig()) {
   try {
     contentfulClient = createClient({
@@ -46,10 +42,8 @@ if (hasValidPreviewConfig()) {
   }
 }
 
-// Helper function to get client based on preview mode
 export const getContentfulClient = (preview = false) => {
   return preview ? contentfulPreviewClient : contentfulClient;
 };
 
-// Export the clients
 export { contentfulClient, contentfulPreviewClient };

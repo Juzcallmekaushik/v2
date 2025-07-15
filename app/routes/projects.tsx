@@ -52,7 +52,6 @@ export default function ProjectsPage() {
     const [showPreviousVersions, setShowPreviousVersions] = useState(false);
 
     useEffect(() => {
-        // Trigger animation after component mounts
         const timer = setTimeout(() => {
             setIsLoaded(true);
         }, 100);
@@ -81,7 +80,6 @@ export default function ProjectsPage() {
         <div className="min-h-screen bg-black text-white">
             <NavBar />
             
-            {/* Header Section */}
             <div className={`max-w-6xl mx-auto px-4 pt-8 pb-3 transition-all duration-700 ease-out ${
                 isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>
@@ -109,7 +107,6 @@ export default function ProjectsPage() {
                 <hr className="border-t border-gray-800 w-full mb-8" />
             </div>
                         
-            {/* Projects Grid */}
             <div className={`max-w-6xl mx-auto px-4 pb-16 transition-all duration-700 ease-out delay-200 ${
                 isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}>

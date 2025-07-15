@@ -118,7 +118,6 @@ const ContactForm: React.FC = () => {
                 )}
             </form>
             
-            {/* Social Media Buttons */}
             <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 mt-6 max-w-sm sm:max-w-full mx-auto px-4">
                 <a 
                     href="https://github.com/Juzcallmekaushik" 
