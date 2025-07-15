@@ -7,7 +7,6 @@ import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
-import Loading from "../components/Loading";
 import GoToTop from "../components/GoToTop";
 import PreviousVersions from "../components/PreviousVersions";
 
@@ -19,34 +18,16 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  const [isLoading, setIsLoading] = useState(() => {
-    if (typeof window !== "undefined") {
-      return !sessionStorage.getItem("hasVisited");
-    }
-    return true;
-  });
   const [isLoaded, setIsLoaded] = useState(false);
   const [showGoToTop, setShowGoToTop] = useState(false);
   const [showPreviousVersions, setShowPreviousVersions] = useState(false);
 
   useEffect(() => {
-    if (isLoading) {
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-        sessionStorage.setItem("hasVisited", "true");
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (!isLoading) {
-      const timer = setTimeout(() => {
-        setIsLoaded(true);
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [isLoading]);
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,9 +44,7 @@ export default function Index() {
   return (
     <>
       <div
-        className={`min-h-screen bg-black text-white transition-opacity duration-500 ${
-          isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
+        className="min-h-screen bg-black text-white transition-opacity duration-500 opacity-100"
       >
         <NavBar />
         <main
@@ -91,7 +70,6 @@ export default function Index() {
       </div>
       {showGoToTop && <GoToTop />}
       {showPreviousVersions && <PreviousVersions />}
-      {isLoading && <Loading />}
     </>
   );
 }
