@@ -9,6 +9,8 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 import "./tailwind.css";
+import React from "react";
+
 
 export const links: LinksFunction = () => [
   { rel: "preload", href: "/fonts/Inter.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
@@ -17,7 +19,18 @@ export const links: LinksFunction = () => [
   { rel: "preload", href: "/fonts/Ubuntu-Bold.ttf", as: "font", type: "font/ttf", crossOrigin: "anonymous" },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function App() {
+  const [showInfo, setShowInfo] = React.useState(false);
+
+  React.useEffect(() => {
+    function handleScroll() {
+      const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
+      setShowInfo(atBottom);
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -28,17 +41,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="bg-black text-white font-ubuntu transition-colors duration-300">
         <main>
-          {children}
+          <Outlet />
         </main>
+        {showInfo && (
+          <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 50 }}>
+          </div>
+        )}
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
-}
-
-export default function App() {
-  return <Outlet />;
 }
 
 export function ErrorBoundary() {

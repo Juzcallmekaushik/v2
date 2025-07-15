@@ -1,12 +1,14 @@
 import { json } from "@remix-run/node";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getProjects } from "~/services/contentful.server";
 import type { ProjectFields } from "~/types/contentful";
 import { RiLinksFill, RiGithubFill, RiSearchLine } from "@remixicon/react";
 import NavBar from "~/components/NavBar";
 import Footer from "~/components/Footer";
+import GoToTop from "~/components/GoToTop";
+import PreviousVersions from "~/components/PreviousVersions";
 
 interface Project {
     fields: ProjectFields;
@@ -46,6 +48,8 @@ export default function ProjectsPage() {
     const { projects } = useLoaderData<LoaderData>();
     const [searchTerm, setSearchTerm] = useState("");
     const [isLoaded, setIsLoaded] = useState(false);
+    const [showGoToTop, setShowGoToTop] = useState(false);
+    const [showPreviousVersions, setShowPreviousVersions] = useState(false);
 
     useEffect(() => {
         // Trigger animation after component mounts
@@ -53,6 +57,18 @@ export default function ProjectsPage() {
             setIsLoaded(true);
         }, 100);
         return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowGoToTop(window.scrollY > 0);
+            const scrolledToBottom =
+                window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
+            setShowPreviousVersions(scrolledToBottom);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const filteredProjects = projects.filter(project =>
@@ -178,6 +194,9 @@ export default function ProjectsPage() {
                     </div>
                 )}
             </div>
+            
+            {showGoToTop && <GoToTop />}
+            {showPreviousVersions && <PreviousVersions />}
             
             <Footer />
         </div>

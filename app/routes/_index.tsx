@@ -1,5 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import Introduction from "../components/Introduction";
 import AboutMe from "../components/AboutMe";
@@ -8,6 +8,8 @@ import Projects from "../components/Projects";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
 import Loading from "../components/Loading";
+import GoToTop from "../components/GoToTop";
+import PreviousVersions from "../components/PreviousVersions";
 
 export const meta: MetaFunction = () => {
   return [
@@ -18,6 +20,8 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   const [isLoading, setIsLoading] = useState(true);
+  const [showGoToTop, setShowGoToTop] = useState(false);
+  const [showPreviousVersions, setShowPreviousVersions] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,6 +29,21 @@ export default function Index() {
     }, 3000);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show GoToTop if not at the top
+      setShowGoToTop(window.scrollY > 0);
+
+      // Show PreviousVersions if scrolled to bottom
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
+      setShowPreviousVersions(scrolledToBottom);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -49,7 +68,8 @@ export default function Index() {
         </main>
         <Footer />
       </div>
-
+      {showGoToTop && <GoToTop />}
+      {showPreviousVersions && <PreviousVersions />}
       {isLoading && <Loading />}
     </>
   );
