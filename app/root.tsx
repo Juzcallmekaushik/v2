@@ -10,6 +10,8 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 import "./tailwind.css";
 import React from "react";
+import { SpeedInsights } from "@vercel/speed-insights/remix";
+import { Analytics } from "@vercel/analytics/react";
 
 
 export const links: LinksFunction = () => [
@@ -49,6 +51,8 @@ export default function App() {
         )}
         <ScrollRestoration />
         <Scripts />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
