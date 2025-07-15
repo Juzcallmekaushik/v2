@@ -72,7 +72,7 @@ export default function Introduction() {
                     <span>⚡</span>
                     <div>
                         Currently working on{" "}
-                        <span className="text-green-400">Studeux</span>
+                        <span className="text-green-400 font-bold">Studeux</span>
                     </div>
                 </div>
             </div>
