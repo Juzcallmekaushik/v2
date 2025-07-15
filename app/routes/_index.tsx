@@ -19,17 +19,34 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window !== "undefined") {
+      return !sessionStorage.getItem("hasVisited");
+    }
+    return true;
+  });
+  const [isLoaded, setIsLoaded] = useState(false);
   const [showGoToTop, setShowGoToTop] = useState(false);
   const [showPreviousVersions, setShowPreviousVersions] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    if (isLoading) {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        sessionStorage.setItem("hasVisited", "true");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading]);
 
-    return () => clearTimeout(timer);
-  }, []);
+  useEffect(() => {
+    if (!isLoading) {
+      const timer = setTimeout(() => {
+        setIsLoaded(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,9 +62,17 @@ export default function Index() {
 
   return (
     <>
-      <div className={`min-h-screen bg-black text-white ${isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'} transition-opacity duration-500`}>
+      <div
+        className={`min-h-screen bg-black text-white transition-opacity duration-500 ${
+          isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+      >
         <NavBar />
-        <main className="container mx-auto px-4">
+        <main
+          className={`container mx-auto px-4 transition-all duration-700 ease-out ${
+            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}
+        >
           <Introduction />
           <div className="flex flex-col lg:flex-row lg:gap-8">
             <div className="lg:w-1/2">
