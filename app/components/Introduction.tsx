@@ -45,7 +45,7 @@ export default function Introduction() {
             )}
 
             <div className="relative z-10">
-                <p className="relative z-10 text-[#97fc7a] text-xl sm:text-xl md:text-3xl font-bold">
+                <p className="relative z-10 text-green-400 text-xl sm:text-xl md:text-3xl font-bold">
                     Hey there! I&apos;m
                 </p>
                 <h1 className="relative z-10 text-white text-4xl sm:text-6xl md:text-8xl font-extrabold leading-[95%] tracking-tight mt-2">
@@ -72,14 +72,7 @@ export default function Introduction() {
                     <span>⚡</span>
                     <div>
                         Currently working on{" "}
-                        <a
-                            href="/"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-green-300 hover:text-green-300 transition-colors duration-200"
-                        >
-                            Studeux
-                        </a>
+                        <span className="text-green-400">Studeux</span>
                     </div>
                 </div>
             </div>
