@@ -32,5 +32,10 @@ export default defineConfig(() => {
       }),
       tsconfigPaths(),
     ],
+    build: {
+      rollupOptions: {
+        treeshake: false,
+      },
+    },
   };
 });
