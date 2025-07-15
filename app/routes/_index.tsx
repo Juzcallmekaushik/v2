@@ -14,7 +14,7 @@ import PreviousVersions from "../components/PreviousVersions";
 export const meta: MetaFunction = () => {
   return [
     { title: "Kaushik Reddy" },
-    { name: "description", content: "Welcome to Kaushik Reddy's portfolio website" },
+    { name: "description", content: "Fullstack Developer | Graphic Designer" },
   ];
 };
 
