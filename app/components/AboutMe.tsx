@@ -12,7 +12,7 @@ export default function AboutMe() {
                 <div className="text-gray-300 dark:text-gray-300 space-y-8 text-sm md:text-md leading-relaxed">
                     <div className="w-full space-y-6">
                     <p>
-                      Hey, I&apos;m Kaushik Reddy, a passionate graphic designer, programmer, and web developer who loves blending creativity with code.
+                      Hey, I&apos;m Kaushik Reddy, an 18-year-old graphic designer, programmer, and web developer passionate about blending creativity with code.
                     </p>
                     <p>
                       Whether it&apos;s crafting clean, intuitive interfaces or building full stack applications, I&apos;m driven by curiosity and a desire to create things that truly make an impact. I believe in pushing boundaries, learning constantly, and sharing what I build with the world.
