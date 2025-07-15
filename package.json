@@ -16,7 +16,6 @@
     "@remix-run/react": "^2.16.8",
     "@remix-run/serve": "^2.16.8",
     "@remixicon/react": "^4.6.0",
-    "@vercel/remix-vite": "^1.0.2",
     "@tailwindcss/vite": "^4.1.11",
     "@types/nodemailer": "^6.4.17",
     "contentful": "^11.7.6",
