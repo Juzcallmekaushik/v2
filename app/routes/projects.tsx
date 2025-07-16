@@ -10,6 +10,13 @@ import Footer from "~/components/Footer";
 import GoToTop from "~/components/GoToTop";
 import PreviousVersions from "~/components/PreviousVersions";
 
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Projects" },
+    { name: "description", content: "A showcase of my work as a fullstack developer." },
+  ];
+};
+
 interface Project {
     fields: ProjectFields;
     sys: {
