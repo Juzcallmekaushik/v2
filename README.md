@@ -135,7 +135,7 @@ npm start
 | `RESEND_API_KEY` | Resend email service API key | Yes |
 
 ## 📄 License
-This project is licensed under the KAUSHIK REDDY PERSONAL USE LICENSE, Version 1.0 (July 2025).  See [LICENSE](./LICENSE) for details.
+This project is licensed under the KAUSHIK REDDY PERSONAL USE LICENSE, Version 2.0 (July 2025). See [LICENSE](./LICENSE) for details.
 
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Juzcallmekaushik/v2/issues).
