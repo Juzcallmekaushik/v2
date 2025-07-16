@@ -132,7 +132,6 @@ npm start
 | `CONTENTFUL_SPACE_ID` | Contentful space identifier | Yes |
 | `CONTENTFUL_ACCESS_TOKEN` | Contentful delivery API token | Yes |
 | `CONTENTFUL_PREVIEW_ACCESS_TOKEN` | Contentful preview API token | Yes |
-| `FIREBASE_CONFIG` | Firebase configuration object | Yes |
 | `RESEND_API_KEY` | Resend email service API key | Yes |
 
 ## 📄 License
